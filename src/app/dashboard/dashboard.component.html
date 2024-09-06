@@ -1,0 +1,262 @@
+<div class="content_page">
+
+    <div class="left_content_page">
+        <div class="content_page_header">
+            <div class="company_logo">
+                <a routerLink="/dashboard"> <img src="./assets/img/Suvarna Logo1.png" alt=""></a>
+            </div>
+
+            <div class="menu_icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="content_page_body">
+            <ul class="content_tabs">
+                <li class="tab_active"><a routerLink="/dashboard">Dashboard</a></li>
+                <li><a routerLink="/user">User</a></li>
+                <li><a routerLink="/employees">Employees</a></li>
+                <li><a routerLink="/product">Products</a></li>
+                <li><a routerLink="/stocks">Stock</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="content_page_footer">
+            <label class="last_login">
+                Last Login :<span class="last_login_time"> {{loginTime}}</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="right_content_page">
+
+        <div class="content_page_header">
+            <div class="company_logo">
+                <h3 class="login_h3">Dashboard</h3>
+            </div>
+
+            <div class="header_left">
+                <!-- <a href="./signup.html">Signup</a> -->
+                <div class="user_details">
+                    <div class="login_field_user">
+                     
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="user_details_content">
+                        <ul class="content_tabs">
+                            <li class="guest_login">
+                                <label class="last_login">
+                                    User Login : {{username}}
+                                </label>
+                                <span class="last_login_time"> Guest User</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="log_out">
+                            <a (click)="logout()" >Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right_content_sub_page">
+            <div class="content_page_body dashboard_body">
+
+                <div class="tile_contents">
+                    <a routerLink="/user" class="tiles">
+                        <div class="tiles_icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="tiles_details">
+                            <h3>Users</h3>
+                            <div class="count">
+                                <span>{{user?.length}}</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a routerLink="/product" class="tiles">
+                        <div class="tiles_icon">
+                            <i class="fa-brands fa-product-hunt"></i>
+                        </div>
+                        <div class="tiles_details">
+                            <h3>Products</h3>
+                            <div class="count">
+                                <span>{{pro?.length}}</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a routerLink="/employees" class="tiles">
+                        <div class="tiles_icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="tiles_details">
+                            <h3>Employees</h3>
+                            <div class="count">
+                                <span>{{emp?.length}}</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a routerLink="/stocks" class="tiles">
+                        <div class="tiles_icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div class="tiles_details">
+                            <h3>Stock Items</h3>
+                            <div class="count">
+                                <span>{{stock?.length}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="other_content">
+
+                    <div class="content_graph">
+                        <div class="graph_buttons">
+                            <button type="submit" class="active">Today</button>
+                            <button type="submit">Yesterday</button>
+                            <button type="submit">Last Week</button>
+                            <button type="submit">This Week</button>
+                            <button type="submit">Last Month</button>
+                            <button type="submit">This Month</button>
+                            <button type="submit">Last Year</button>
+                            <button type="submit">This Year</button>
+                        </div>
+
+                        <div class="tile_contents">
+                            <div class="tiles">
+                                <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+                            </div>
+
+                            <div class="tiles">
+                                <p-chart type="radar" [data]="data" [options]="options"></p-chart>
+                            </div>
+
+                            <div class="tiles">
+                                <p-chart type="doughnut" [data]="data" [options]="options"></p-chart>
+                            </div>
+
+                            <div class="tiles">
+                                <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+                            </div>
+
+                            <div class="tiles">
+                                <p-chart type="bubble" [data]="data" [options]="options"></p-chart>
+                 
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script>
+    const xValues = ["Today", "Yesterday", "Last Week", "This Week", "Last Month"];
+    const yValues = [100, 500, 50, 1000, 15];
+    const barColors = ["red", "green", "blue", "orange", "brown"];
+
+    new Chart("myChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: "user"
+            }
+        }
+    });
+
+    new Chart("myChart1", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: "Employees"
+            }
+        }
+    });
+
+    new Chart("myChart2", {
+        type: "horizontalBar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: "Product"
+            }
+        }
+    });
+
+    new Chart("myChart3", {
+        type: "doughnut",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: "Stock"
+            }
+        }
+    });
+
+
+
+    new Chart("myChart4", {
+        type: "radar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: "Prod Category"
+            }
+        }
+    });
+</script>

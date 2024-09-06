@@ -1,0 +1,25 @@
+.styled-button {
+    background-color: #2320e2;
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 40px; 
+    width: 100px; 
+  }
+  
+  .styled-button:hover {
+    background-color: #45a049; 
+  }
+
+
+  
+input{
+  width: 20vw;
+  padding: 8px;
+  border-radius: 5px;
+}

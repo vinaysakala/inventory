@@ -1,0 +1,16 @@
+create_new_one{
+    display: flex;
+    text-align: center;
+    
+    
+}
+input{
+    border-radius: 5px;
+    width: 20vw;
+    padding: 7px;
+}
+#droup{
+    border-radius: 5px;
+    width: 20vw;
+    padding: 7px; 
+}

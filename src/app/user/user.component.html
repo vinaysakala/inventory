@@ -1,0 +1,172 @@
+<div class="content_page">
+
+    <div class="left_content_page">
+        <div class="content_page_header">
+            <div class="company_logo">
+                <a routerLink="/dashboard"> <img src="./assets/img/Suvarna Logo1.png" alt=""></a>
+            </div>
+
+            <div class="menu_icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="content_page_body">
+            <ul class="content_tabs">
+                <li><a routerLink="/dashboard">Dashboard</a></li>
+                <li class="tab_active"><a routerLink="/user">User</a></li>
+                <li><a routerLink="/employees">Employees</a></li>
+                <li><a routerLink="/product">Products</a></li>
+                <li><a routerLink="/stocks">Stock</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="content_page_footer">
+            <label class="last_login">
+                Last Login :<span class="last_login_time">{{loginTime}}</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="right_content_page">
+
+        <div class="content_page_header">
+            <div class="company_logo">
+                <h3 class="login_h3">Users</h3>
+            </div>
+
+            <div class="header_left">
+                <!-- <a href="./signup.html">Signup</a> -->
+                <div class="user_details">
+                    <div class="login_field_user">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="user_details_content">
+                        <ul class="content_tabs">
+                            <li class="guest_login">
+                                <label class="last_login">
+                                    User Login :
+                                </label>
+                                <span class="last_login_time"> Guest User</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="log_out">
+                            <a (click)="logout()">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right_content_sub_page">
+            <div class="content_page_body dashboard_body">
+                <div class="content_sub_page">
+
+                    <div class="content_page_header">
+                        <div class="company_logo">
+                            <h3 class="login_h3"></h3>
+                        </div>
+
+                        <div class="action_needed">
+                            <a routerLink="/createuser" class="cu_button active">Add</a>
+                        </div>
+                    </div>
+
+
+                    <div class="table_view"  *ngIf="showData">
+                        <div class="tableFixHead">
+                            <table id="customers">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 60px;">S. No</th>
+                                        <th style="width: 100px;">User_id</th>
+                                        <th style="width: 100px;">User Name</th>
+                                        <th style="width: 100px;">Password</th>
+                                        <th style="width: 200px;">User Email</th>                                       
+                                        <th style="width: 100px;">Role</th>
+                                        <th style="width: 110px;">Mobile Number</th>
+                                        <th style="width: 50px;">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let item of userdata?.data,index as i">
+                                        <td>{{i+1}}</td>
+                                        <td>{{item._id}}</td>
+                                        <td>{{item.Username}}</td>
+                                        <td>{{item.Password}}</td>
+                                        <td>{{item.Email}}</td>
+                                        <td>{{item.Role}}</td>
+                                        <td>{{item.mobile}}</td>
+                                        
+                                       
+                                        <td>
+                                            <div class="tb_action">
+                                                <div><i class="fa-solid fa-pen-to-square"(click)="populateUsreData(item)"></i></div>
+                                                <div><i class="fa-solid fa-trash"  (click)="delete(item._id)"></i></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    
+
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="create_new_one" *ngIf="showForm">
+                        <div class="creating_new">
+
+                            <div class="input_field">
+                                <input type="text" placeholder="User Name"  [(ngModel)]="userToUpdate.Username" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <br>
+                            <div class="input_field">
+                                <div class="input_sub_field">
+                                    <input type="text" placeholder="Password" [(ngModel)]="userToUpdate.Password" [ngModelOptions]="{standalone: true}">
+                                </div>
+
+                            </div>
+                            <br>
+                             <div class="input_field">
+                                <input type="email" placeholder="Email"  [(ngModel)]="userToUpdate.Email" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <br>
+                             <div class="input_field">
+                               
+                                <div class="input_sub_field"  >
+                                    <select [(ngModel)]="userToUpdate.Role" [ngModelOptions]="{standalone: true}"   id="droup">
+                                        <option value="user">User</option>
+                                        <option value="emp">Employee</option>
+                                    </select>
+                                </div>
+                            </div>
+                             <br>
+                            <div class="input_field">
+
+                                <div class="input_sub_field">
+                                    <input type="number" placeholder="Mobile Number"  [(ngModel)]="userToUpdate.mobile" [ngModelOptions]="{standalone: true}">
+                                </div>
+                            </div>
+
+                           
+
+                            <br>
+                            <button class="styled-button" (click)="updateUser()">Update</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

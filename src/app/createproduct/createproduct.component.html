@@ -1,0 +1,114 @@
+<div class="content_page">
+
+    <div class="left_content_page">
+        <div class="content_page_header">
+            <div class="company_logo">
+                <a routerLink="/dashboard"><img src="./assets/img/Suvarna Logo1.png" alt=""></a>
+            </div>
+
+            <div class="menu_icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="content_page_body">
+            <ul class="content_tabs">
+                <li><a routerLink="/dashboard">Dashboard</a></li>
+                <li><a routerLink="/User">User</a></li>
+                <li><a routerLink="/employees">Employees</a></li>
+                <li class="tab_active"><a routerLink="/Product">Product</a></li>
+                <li><a routerLink="/stocks">Stock</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="content_page_footer">
+            <label class="last_login">
+                Last Login :<span class="last_login_time">{{loginTime}}</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="right_content_page">
+
+        <div class="content_page_header">
+            <div class="company_logo">
+                <h3 class="login_h3">Products</h3>
+            </div>
+
+            <div class="header_left">
+                <!-- <a href="./signup.html">Signup</a> -->
+                <div class="user_details">
+                    <div class="login_field_user">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="user_details_content">
+                        <ul class="content_tabs">
+                            <li class="guest_login">
+                                <label class="last_login">
+                                    User Login :
+                                </label>
+                                <span class="last_login_time"> Guest User</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="log_out">
+                            <a (click)="logout()">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right_content_sub_page">
+            <div class="content_page_body dashboard_body">
+                <div class="content_sub_page">
+
+                    <div class="content_page_header">
+                        <div class="company_logo">
+                            <h3 class="login_h3">Create Product</h3>
+                        </div>
+
+                        <div class="action_needed">
+                            <a  class="cu_button active" (click)="add()">Save</a>
+                            <a routerLink="/product" class="cu_button active">Back to Grid</a>
+                        </div>
+                    </div>
+
+                    <div class="create_new_one"  >
+                        <div class="creating_new" >
+
+                            <div class="input_field">
+                                <input type="text" placeholder="Product Name" [(ngModel)]="productobj.Name" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <br>
+                            <div class="input_field">
+                                <div class="input_sub_field">
+                                    <input type="text" placeholder="Category"  [(ngModel)]="productobj.Category" [ngModelOptions]="{standalone: true}">
+                                </div>
+                            <br>
+
+                                <div class="input_sub_field">
+                                    
+                                    <input type="number" placeholder="Price"  [(ngModel)]="productobj.Price" [ngModelOptions]="{standalone: true}">
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="input_sub_field ">
+                                
+                                <input type="number" placeholder="Stock"  [(ngModel)]="productobj.Stock" [ngModelOptions]="{standalone: true}">
+                            </div>
+
+                           
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+.create_new_one{
+    display: flex;
+    text-align:center;
+    justify-content: center;
+
+
+}
+
+input{
+    border-radius: 5px;
+    width: 20vw;
+    padding: 7px;
+
+}
